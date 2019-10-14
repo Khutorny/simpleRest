@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Entity;
 
-use App\Entity\Traits\CreateDateTrait;
+namespace App\Domain\Entity;
+
+
+use App\Domain\Entity\Traits\IdTrait;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -11,20 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Entity
  * @ORM\Table(name="classroom")
- * @ORM\HasLifecycleCallbacks()
  */
 class ClassRoom
 {
-    use CreateDateTrait;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    use IdTrait;
 
     /**
      * @var string
@@ -45,12 +38,11 @@ class ClassRoom
     private $active;
 
     /**
-     * @return int|null
+     * @var DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    private $createdAt;
 
     /**
      * @return string|null
@@ -85,6 +77,20 @@ class ClassRoom
     public function setActive(int $active): ClassRoom
     {
         $this->active = $active;
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getCreatedAt(): DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(): ClassRoom
+    {
+        $this->createdAt = new DateTime();
         return $this;
     }
 }
