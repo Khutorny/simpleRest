@@ -24,7 +24,7 @@ services:
         tags: ['controller.service_arguments']
 
     classroom_normalizer:
-        class: App\Normalizer\ClassRoomNormalizer
+        class: App\Infrastructure\Normalizer\ClassRoomNormalizer
         public: false
         tags: [serializer.normalizer]
 
