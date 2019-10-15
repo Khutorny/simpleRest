@@ -37,6 +37,7 @@ apply database migrations and load fixtures
 ./bin/console doctrine:migrations:migrate
 ./bin/console doctrine:fixtures:load
 ```
+or use `symfony/db.sql` file to fill the database 
 
 call endpoints to manage ClassRoom entity
 - GET [http://localhost/classrooms/1](http://localhost/classrooms/1)
