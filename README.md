@@ -39,6 +39,7 @@ apply database migrations and load fixtures
 ```
 or use `symfony/db.sql` file to fill the database 
 
+### Using
 call endpoints to manage ClassRoom entity
 - GET [http://localhost/classrooms/1](http://localhost/classrooms/1)
 - GET [http://localhost/classrooms](http://localhost/classrooms)
