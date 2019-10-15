@@ -22,9 +22,9 @@ run docker and connect to container:
  docker-compose exec php sh
 ```
 
-install latest version of [Symfony](http://symfony.com/doc/current/setup.html) via composer:
+install dependencies via composer
 ```
-$ composer create-project symfony/website-skeleton .
+$ composer install
 ```
 
 configure the database connection information in your root directory `.env` 
@@ -32,5 +32,31 @@ configure the database connection information in your root directory `.env`
 DATABASE_URL=mysql://root:root@mysql:3306/symfony
 ```
 
-call localhost in your browser:
-- [http://localhost](http://localhost/)
+apply database migrations and load fixtures
+```
+./bin/console doctrine:migrations:migrate
+./bin/console doctrine:fixtures:load
+```
+
+call endpoints to manage ClassRoom entity
+- GET [http://localhost/classrooms/1](http://localhost/classrooms/1)
+- GET [http://localhost/classrooms](http://localhost/classrooms)
+
+- DELETE [http://localhost/classrooms/1](http://localhost/classrooms/1)
+
+- POST [http://localhost/classrooms](http://localhost/classroom)
+```json
+{
+  "name": "classname",
+  "active": 1
+}
+``` 
+
+
+- PATCH [http://localhost/classrooms/1](http://localhost/classroom/1)
+```json
+{
+  "active": 0
+}
+``` 
+
